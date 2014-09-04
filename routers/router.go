@@ -1,7 +1,7 @@
 package routers
 
 import (
-    "github.com/mrsaints/AD-ACP/controllers"
+    "github.com/annadaphne/Admin/controllers"
     "github.com/astaxie/beego"
 )
 

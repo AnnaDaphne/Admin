@@ -5,7 +5,7 @@ import (
     "github.com/astaxie/beego"
     "github.com/astaxie/beego/orm"
     "github.com/astaxie/beego/validation"
-    models "github.com/mrsaints/AD-ACP/models"
+    models "github.com/annadaphne/Admin/models"
 )
 
 type PlaceController struct {

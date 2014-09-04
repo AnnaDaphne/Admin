@@ -1,7 +1,7 @@
 package main
 
 import (
-    _ "github.com/mrsaints/AD-ACP/routers"
+    _ "github.com/annadaphne/Admin/routers"
     "github.com/astaxie/beego"
     "github.com/astaxie/beego/orm"
     _ "github.com/go-sql-driver/mysql"
