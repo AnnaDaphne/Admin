@@ -10,7 +10,6 @@ type AdminController struct {
 
 func (this *AdminController) Prepare() {
     this.Layout = "admin/layout.tpl"
-    this.Data["Token"] = this.XsrfToken()
 
     this.Data["HeadStyles"] = []string{
         "//cdn.jsdelivr.net/pure/0.5.0/pure-min.css",
@@ -22,4 +21,13 @@ func (this *AdminController) Prepare() {
     this.Data["HeadScripts"] = []string{
         "//cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js",
     }
+
+    this._SecureHeaders()
+}
+
+func (this *AdminController) _SecureHeaders() {
+    this.Data["Token"] = this.XsrfToken()
+    this.Ctx.Output.Header("X-Content-Type-Options", "nosniff")
+    this.Ctx.Output.Header("X-FRAME-OPTIONS", "SAMEORIGIN")
+    this.Ctx.Output.Header("X-XSS-Protection", "1;mode=block")
 }
