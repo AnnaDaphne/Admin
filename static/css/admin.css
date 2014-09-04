@@ -1,62 +1,112 @@
-body {
-	color: #212121;
-	font-family: "Roboto", sans-serif;
+body, input, textarea, keygen, select, button {
+    color: #212121;
+    font-family: "Roboto", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	color: #757575;
-	font-weight: normal;
+    color: #757575;
+    font-weight: normal;
 }
 
 a:hover {
-	color: #673ab7;
+    color: #673ab7;
 }
 
-.acpWrapper {
-	padding-left: 13em;
+th {
+    font-weight: normal;
 }
+
+/**/
+
+.pure-form label {
+    color: #757575;
+    display: block;
+    margin: .5em 0;
+}
+
+.pure-form input[type=text] {
+    border: none;
+    border-bottom: 1px solid #CCC;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.form__block {
+    margin: 1em 0;
+}
+
+.form__hint {
+    display: block;
+    font-size: 0.750em;
+    margin: 0.667em 0;
+}
+    .form__hint--warn {
+        color: #ff9800;
+    }
+
+.input--title {
+    font-size: 1.25em;
+}
+
+.flash {
+    background: #323232;
+    color: #FFF;
+    font-size: 0.875em;
+    margin: 1.071em 0;
+    padding: 1.071em 1.714em;
+}
+
+.wrapper.acp {
+    padding-left: 13em;
+}
+
+/**/
 
 .navigation {
-	background: #FFF;
-	border-right: 1px solid #e0e0e0;
-	bottom: 0;
-	left: 0;
-	top: 0;
-	position: fixed;
-	width: 13em;
+    background: #FFF;
+    border-right: 1px solid #e0e0e0;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 13em;
 }
-	.navigation > .pure-menu {
-		background: none;
-		border: none;
-	}
-	.navigation .pure-menu-heading {
-		font-size: 1.25em;
-		font-weight: 500;
-		padding: .5em 1.2em;
-	}
-	.navigation li.divider {
-		border-top: 1px solid #e0e0e0;
-	}
-	.navigation li > a {
-		padding: .625em 1.5em;
-	}
-		.navigation li > a:hover {
-			background: none;
-		}
+    .navigation > .pure-menu {
+        background: none;
+        border: none;
+    }
+        .navigation .pure-menu-heading {
+            font-size: 1.25em;
+            font-weight: 500;
+            padding: .5em 1.2em;
+        }
+        .navigation li.divider {
+            border-top: 1px solid #e0e0e0;
+        }
+        .navigation li > a {
+            padding: .625em 1.5em;
+        }
+            .navigation li > a:hover {
+                background: none;
+            }
+
+/**/
 
 .main {
-	padding: 0.625em 1.5em;
+    padding: 0.625em 1.5em;
 }
 
-.placesOverview th {
-	font-weight: normal;
+.places {
+    margin-bottom: 0.625em;
 }
+
+/**/
 
 #js-description {
-	display: none;
+    display: none;
 }
 
 #epiceditor {
-	display: inline-block;
-	vertical-align: top;
+    display: block;
+    vertical-align: top;
 }

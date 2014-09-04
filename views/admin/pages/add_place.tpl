@@ -1,35 +1,47 @@
-<h1>Create Place</h1>
+<h1>Add Place</h1>
+
+{{if .flash.notice}}
+<div class="flash">
+    {{.flash.notice}}
+</div>
+{{end}}
 
 <form action="" method="post" class="pure-form pure-form-aligned">
     <fieldset>
-        <div class="pure-control-group">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" placeholder="Name">
-        </div>
-        <div class="pure-control-group">
-            <label for="epiceditor">Description</label>
-            <textarea id="js-description" name="description"></textarea>
-            <div id="epiceditor"></div>
-        </div>
-        <div class="pure-control-group">
-            <label for="website">Website URL</label>
-            <input id="website" name="website" type="text" placeholder="Website URL">
-        </div>
-        <div class="pure-control-group">
-            <label for="gpsLat">GPS Latitude</label>
-            <input id="gpsLat" name="gpsLat" type="text" placeholder="GPS Latitude">
-        </div>
-        <div class="pure-control-group">
-            <label for="gpsLong">GPS Longitude</label>
-            <input id="gpsLong" name="gpsLong" type="text" placeholder="GPS Longitude">
-        </div>
-
-        <div class="pure-controls">
-            <button type="submit" class="pure-button pure-button-primary">Create</button>
+        <div class="pure-g">
+            <div class="form__block pure-u-1">
+                <input class="pure-input-1 input--title" id="name" name="name" type="text" placeholder="Place name" value="{{.Place.Name}}" required>
+                {{if .Errors.Name}}<span class="form__hint form__hint--warn">{{.Errors.Name}}</span>{{end}}
+            </div>
+            <div class="form__block pure-u-1">
+                <label for="epiceditor">Description</label>
+                <textarea id="js-description" name="description">{{.Place.Description}}</textarea>
+                <div id="epiceditor"></div>
+                {{if .Errors.Description}}<span class="form__hint form__hint--warn">{{.Errors.Description}}</span>{{end}}
+            </div>
+            <div class="form__block pure-u-1 pure-u-md-1-3">
+                <label for="website">Website URL</label>
+                <input id="website" name="website" type="url" placeholder="Website URL" value="{{.Place.Website}}">
+                {{if .Errors.Website}}<span class="form__hint form__hint--warn">{{.Errors.Website}}</span>{{end}}
+            </div>
+            <div class="form__block pure-u-1-2 pure-u-md-1-3">
+                <label for="latitude">GPS Latitude</label>
+                <input id="latitude" name="latitude" type="number" placeholder="GPS Latitude" step="any" value="{{.Place.Latitude}}">
+                {{if .Errors.Latitude}}<span class="form__hint form__hint--warn">{{.Errors.Latitude}}</span>{{end}}
+            </div>
+            <div class="form__block pure-u-1-2 pure-u-md-1-3">
+                <label for="longitude">GPS Longitude</label>
+                <input id="longitude" name="longitude" type="number" placeholder="GPS Longitude" step="any" value="{{.Place.Longitude}}">
+                {{if .Errors.Longitude}}<span class="form__hint form__hint--warn">{{.Errors.Longitude}}</span>{{end}}
+            </div>
+            <div class="form__block">
+                <button type="submit" class="pure-button pure-button-primary">Add</button>
+            </div>
         </div>
     </fieldset>
 </form>
 
+<!-- TODO: Move to controller -->
 <script src="/static/js/epiceditor.js"></script>
 <script>
     var opts = {
