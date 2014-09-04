@@ -1,7 +1,7 @@
 package controllers
 
 import (
-    //"fmt"
+    "fmt"
     "github.com/astaxie/beego"
     "github.com/astaxie/beego/orm"
     "github.com/astaxie/beego/validation"
@@ -24,7 +24,7 @@ func (this *PlaceController) Get() {
         this.Data["Places"] = places
     } else {
         flash := beego.NewFlash()
-        flash.Notice("No places found. There may be an error on the server.")
+        flash.Notice("No places found. This may be due to a server error.")
         flash.Store(&this.Controller)
         beego.Error(err)
     }
@@ -42,9 +42,12 @@ func (this *PlaceController) AddPlace() {
 }
 
 func (this *PlaceController) _AddPlace() {
-    place := new(models.Place)
+    flash := beego.NewFlash()
+    serverErr := "We are unable to add the place at this time due to a server error. Please try again later."
 
+    place := new(models.Place)
     if err := this.ParseForm(place); err != nil {
+        flash.Error(serverErr)
         beego.Error("Could not parse form values to struct: ", err)
     } else {
         valid := validation.Validation{}
@@ -56,14 +59,14 @@ func (this *PlaceController) _AddPlace() {
             this.Data["Errors"] = valid.ErrorsMap
             beego.Debug(this.Data["Errors"])
         } else {
-            flash := beego.NewFlash()
             o := orm.NewOrm()
-            _, err := o.Insert(place)
+            id, err := o.Insert(place)
 
             if err == nil {
                 flash.Notice("The place has been successfully added.")
+                beego.Debug(fmt.Sprintf("Added a new place with ID: ", id))
             } else {
-                flash.Error("We are unable to add the place at this time due to a database error. Please try again later.")
+                flash.Error(serverErr)
                 beego.Error(err)
             }
 
