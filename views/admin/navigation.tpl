@@ -2,9 +2,9 @@
     <a class="pure-menu-heading">Anna &amp; Daphne</a>
 
     <ul>
-        <li><a href="/admin">Manage Places</a></li>
-        <li><a href="/admin/place/create">Create Place</a></li>
-        <li class="divider"><a href="#">Manage Tags</a></li>
-        <li><a href="#">Create Tags</a></li>
+        <li><a href="{{urlfor "PlaceController.Get"}}">View Places</a></li>
+        <li><a href="{{urlfor "PlaceController.AddPlace"}}">Add Place</a></li>
+        <li class="divider"><a href="#">View Tags</a></li>
+        <li><a href="#">Add Tags</a></li>
     </ul>
 </div>
