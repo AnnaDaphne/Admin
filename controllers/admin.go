@@ -10,6 +10,7 @@ type AdminController struct {
 
 func (this *AdminController) Prepare() {
     this.Layout = "admin/layout.tpl"
+    this.Data["Token"] = this.XsrfToken()
 
     this.Data["HeadStyles"] = []string{
         "//cdn.jsdelivr.net/pure/0.5.0/pure-min.css",

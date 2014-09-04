@@ -35,6 +35,7 @@
                 {{if .Errors.Longitude}}<span class="form__hint--warn">{{.Errors.Longitude}}</span>{{end}}
             </div>
             <div class="form-block">
+                <input type="hidden" name="_xsrf" value="{{.Token}}">
                 <button type="submit" class="pure-button pure-button-primary">Add</button>
             </div>
         </div>
