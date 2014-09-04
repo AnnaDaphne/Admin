@@ -8,15 +8,13 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
-a:hover {
-    color: #673ab7;
-}
-
 th {
     font-weight: normal;
 }
 
-/**/
+a:hover {
+    color: #673ab7;
+}
 
 .pure-form label {
     color: #757575;
@@ -31,20 +29,20 @@ th {
     box-shadow: none;
 }
 
-.form__block {
+/**/
+
+.form-block {
     margin: 1em 0;
 }
 
-.form__hint {
+.form__hint--warn {
+    color: #ff9800;
     display: block;
     font-size: 0.750em;
     margin: 0.667em 0;
 }
-    .form__hint--warn {
-        color: #ff9800;
-    }
 
-.input--title {
+.form__input--title {
     font-size: 1.25em;
 }
 
@@ -56,7 +54,7 @@ th {
     padding: 1.071em 1.714em;
 }
 
-.wrapper.acp {
+.acp-wrapper {
     padding-left: 13em;
 }
 
@@ -96,13 +94,13 @@ th {
     padding: 0.625em 1.5em;
 }
 
-.places {
+.places-overview {
     margin-bottom: 0.625em;
 }
 
 /**/
 
-#js-description {
+#js-markdownSync {
     display: none;
 }
 

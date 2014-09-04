@@ -5,7 +5,7 @@
     {{.flash.notice}}
 </div>
 {{else}}
-<table class="places pure-table pure-table-horizontal">
+<table class="places-overview pure-table pure-table-horizontal">
     <thead>
         <tr>
             <th>Name</th>

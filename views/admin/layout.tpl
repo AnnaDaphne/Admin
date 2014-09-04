@@ -18,7 +18,7 @@
     </head>
 
     <body>
-    <div class="wrapper acp">
+    <div class="acp-wrapper">
         <div class="navigation">
             {{template "admin/navigation.tpl"}}
         </div>
