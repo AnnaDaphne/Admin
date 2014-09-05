@@ -48,8 +48,14 @@ func (this *LoginController) Post() {
             } else {
                 err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(postUser.Password))
                 if err == nil {
+                    user.Lastip = IPToU32(this.Ctx.Input.IP())
+                    if _, err = o.Update(&user); err != nil {
+                        beego.Error(err)
+                    }
+
                     beego.Debug(fmt.Sprintf("Login successful for user ID: ", user.Id))
                     this.Redirect(this.UrlFor("PlaceController.Get"), 302)
+                    return
                 }
                 beego.Debug(fmt.Sprintf("Incorrect password entered: ", err))
                 flash.Error(userpwErr)
