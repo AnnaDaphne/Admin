@@ -7,6 +7,7 @@ import (
 
 func init() {
     beego.Router("/admin/login/", &controllers.LoginController{})
+    beego.Router("/admin/login/generate/:plaintxt", &controllers.LoginController{}, "get:GenBcrypt")
     beego.Router("/admin/place/", &controllers.PlaceController{})
     beego.Router("/admin/place/add", &controllers.PlaceController{}, "get,post:AddPlace")
 }

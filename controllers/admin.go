@@ -9,6 +9,7 @@ type AdminController struct {
 }
 
 func (this *AdminController) Prepare() {
+    beego.AutoRender = true
     this.Layout = "admin/layout.tpl"
 
     this.Data["HeadStyles"] = []string{
