@@ -3,8 +3,13 @@ body, input, textarea, keygen, select, button {
     font-family: "Roboto", sans-serif;
 }
 
+.pure-g [class *="pure-u"] {
+    font-family: "Roboto", sans-serif;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: #757575;
+    font-family: "Roboto", sans-serif;
     font-weight: normal;
 }
 
@@ -22,7 +27,7 @@ a:hover {
     margin: .5em 0;
 }
 
-.pure-form input[type=text] {
+.pure-form input[type=text], .pure-form input[type=password] {
     border: none;
     border-bottom: 1px solid #CCC;
     border-radius: 0;
@@ -32,14 +37,14 @@ a:hover {
 /**/
 
 .form-block {
-    margin: 1em 0;
+    margin: 1em 0 !important;
 }
 
 .form__hint--warn {
     color: #ff9800;
     display: block;
-    font-size: 0.750em;
-    margin: 0.667em 0;
+    font-size: .750em;
+    margin: .667em 0;
 }
 
 .form__input--title {
@@ -49,7 +54,7 @@ a:hover {
 .flash {
     background: #323232;
     color: #FFF;
-    font-size: 0.875em;
+    font-size: .875em;
     margin: 1.071em 0;
     padding: 1.071em 1.714em;
 }
@@ -76,13 +81,15 @@ a:hover {
         .navigation .pure-menu-heading {
             font-size: 1.25em;
             font-weight: 500;
+            line-height: 1.7em;
+            margin: 0;
             padding: .5em 1.2em;
         }
         .navigation li.divider {
             border-top: 1px solid #e0e0e0;
         }
         .navigation li > a {
-            padding: .625em 1.5em;
+            padding: .688em 1.5em;
         }
             .navigation li > a:hover {
                 background: none;
@@ -91,12 +98,66 @@ a:hover {
 /**/
 
 .main {
-    padding: 0.625em 1.5em;
+    padding: .75em 1.5em;
 }
 
 .places-overview {
-    margin-bottom: 0.625em;
+    margin-bottom: .625em;
 }
+
+/**/
+
+.login-wrapper {
+    text-align: center;
+}
+
+.login__title {
+    font-size: 2.125em;
+    line-height: 1.176em;
+    margin: .235em 0;
+    padding: .353em;
+}
+    .login__title--sub {
+        background: #673ab7;
+        border-bottom: 1px solid #e0e0e0;
+        color: #ede7f6;
+        font-size: 1.5em;
+        line-height: 1.333em;
+        margin: 0;
+        padding: .667em;
+    }
+
+.login-block {
+    background: #FFF;
+    box-shadow: 0 1px 1.5px 0 #cccccc;
+    margin: .5em auto;
+}
+
+.login__form fieldset {
+    text-align: left;
+    padding: 1em;
+}
+
+.login__button {
+    background: none;
+    border-top: 1px solid #e0e0e0;
+    border-radius: 0;
+    color: #212121;
+    font-size: .875em;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 1.143em;
+    width: 100%;
+}
+    .login__button:hover {
+        background: none;
+        color: #5677fc;
+    }
+    .login__button:active, .login__button:focus {
+        background: none;
+        box-shadow: none;
+        color: #3b50ce;
+    }
 
 /**/
 

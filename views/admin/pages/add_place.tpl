@@ -6,7 +6,7 @@
 </div>
 {{end}}
 
-<form action="" method="post" class="pure-form pure-form-aligned">
+<form action="" method="post" class="pure-form">
     <fieldset>
         <div class="pure-g">
             <div class="form-block pure-u-1">
