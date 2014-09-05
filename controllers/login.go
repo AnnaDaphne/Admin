@@ -1,16 +1,23 @@
 package controllers
 
 import (
-    "fmt"
-    "code.google.com/p/go.crypto/bcrypt"
     "github.com/astaxie/beego"
-    "github.com/astaxie/beego/orm"
     "github.com/astaxie/beego/validation"
+    "github.com/annadaphne/Admin/modules/auth"
     models "github.com/annadaphne/Admin/models"
 )
 
 type LoginController struct {
     AdminController
+}
+
+func (this *LoginController) Prepare() {
+    this.AdminController.Prepare()
+
+    if this.LoggedIn {
+        this.Redirect(this.UrlFor("PlaceController.Get"), 302)
+        return
+    }
 }
 
 func (this *LoginController) Get() {
@@ -38,26 +45,13 @@ func (this *LoginController) Post() {
             this.Data["Errors"] = valid.ErrorsMap
             beego.Debug(this.Data["Errors"])
         } else {
-            o := orm.NewOrm()
-            user := models.User{Username: postUser.Username}
-            err := o.Read(&user, "Username")
-
-            if err == orm.ErrNoRows {
-                flash.Error(userpwErr)
-                beego.Debug(fmt.Sprintf("Incorrect username entered: ", postUser.Username))
+            user := new(models.User)
+            if auth.VerifyUser(user, postUser.Username, postUser.Password) {
+                this.CompleteLogin(user)
+                // 200?
+                this.Redirect(this.UrlFor("PlaceController.Get"), 302)
+                return
             } else {
-                err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(postUser.Password))
-                if err == nil {
-                    user.Lastip = IPToU32(this.Ctx.Input.IP())
-                    if _, err = o.Update(&user); err != nil {
-                        beego.Error(err)
-                    }
-
-                    beego.Debug(fmt.Sprintf("Login successful for user ID: ", user.Id))
-                    this.Redirect(this.UrlFor("PlaceController.Get"), 302)
-                    return
-                }
-                beego.Debug(fmt.Sprintf("Incorrect password entered: ", err))
                 flash.Error(userpwErr)
             }
         }
@@ -70,11 +64,7 @@ func (this *LoginController) Post() {
 // Temp
 func (this *LoginController) GenBcrypt() {
     beego.AutoRender = false
-    password := []byte(this.Ctx.Input.Param(":plaintxt"))
-    hashedPassword, err := bcrypt.GenerateFromPassword(password, 10)
-    if err != nil {
-        beego.Error(err)
-    } else {
-        this.Ctx.WriteString(string(hashedPassword))
-    }
+
+    password := auth.HashPassword(this.Ctx.Input.Param(":plaintxt"))
+    this.Ctx.WriteString(password)
 }
