@@ -30,6 +30,7 @@
                     <li><a href="{{urlfor "PlaceController.AddPlace"}}">Add Place</a></li>
                     <li class="divider"><a href="#">View Tags</a></li>
                     <li><a href="#">Add Tags</a></li>
+                    <li class="divider"><a href="{{urlfor "AdminController.Logout"}}">Logout</a></li>
                 </ul>
             </div>
         </div>

@@ -4,6 +4,7 @@ import (
     "fmt"
     "github.com/astaxie/beego"
     "github.com/astaxie/beego/orm"
+    "github.com/annadaphne/Admin/modules/auth"
     "github.com/annadaphne/Admin/modules/utils"
     models "github.com/annadaphne/Admin/models"
 )
@@ -56,10 +57,15 @@ func (this *AdminController) CompleteLogin(user *models.User) {
     beego.Debug(fmt.Sprintf("Login successful for user ID: ", user.Id))
 }
 
-func (this *AdminController) Logout() {
+func (this *AdminController) CompleteLogout() {
     beego.Debug("Logout successful.")
     this.DelSession("uid")
     this.DestroySession()
+}
+
+func (this *AdminController) Logout() {
+    this.CompleteLogout()
+    this.Redirect(this.UrlFor("LoginController.Get"), 302)
 }
 
 func (this *AdminController) LoadUserSession() bool {
@@ -73,8 +79,16 @@ func (this *AdminController) LoadUserSession() bool {
             this.User = user
             return true
         }
-        this.Logout()
+        this.CompleteLogout()
         beego.Error(err)
     }
     return false
+}
+
+// Temp
+func (this *AdminController) GenBcrypt() {
+    beego.AutoRender = false
+
+    password := auth.HashPassword(this.Ctx.Input.Param(":plaintxt"))
+    this.Ctx.WriteString(password)
 }

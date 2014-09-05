@@ -48,7 +48,6 @@ func (this *LoginController) Post() {
             user := new(models.User)
             if auth.VerifyUser(user, postUser.Username, postUser.Password) {
                 this.CompleteLogin(user)
-                // 200?
                 this.Redirect(this.UrlFor("PlaceController.Get"), 302)
                 return
             } else {
@@ -59,12 +58,4 @@ func (this *LoginController) Post() {
 
     flash.Store(&this.Controller)
     this.Redirect(this.UrlFor("LoginController.Get"), 302)
-}
-
-// Temp
-func (this *LoginController) GenBcrypt() {
-    beego.AutoRender = false
-
-    password := auth.HashPassword(this.Ctx.Input.Param(":plaintxt"))
-    this.Ctx.WriteString(password)
 }
