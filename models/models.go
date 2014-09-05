@@ -5,5 +5,5 @@ import (
 )
 
 func init() {
-    orm.RegisterModel(new(Place))
+    orm.RegisterModel(new(Place), new(User))
 }
